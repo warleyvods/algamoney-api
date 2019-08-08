@@ -1,23 +1,30 @@
 package com.algaworks.algamoney.api.model;
 
+import com.algaworks.algamoney.api.arquiteturabase.entidade.Entidade;
 import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-@Data
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "categoria")
-public class Categoria {
+public class Categoria extends Entidade {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long codigo;
+	@NotNull
+	@Size(min = 3, max = 20)
+	private String nome;
 
-    @NotNull
-    @Size(min = 3, max = 20)
-    private String nome;
 
 }
