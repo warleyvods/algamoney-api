@@ -60,4 +60,10 @@ public class PessoaResource {
 		pessoaService.atualizarPropriedadeAtivo(codigo, ativo);
 	}
 
+	@GetMapping("/buscar-por-nome/{nome}")
+	public ResponseEntity<?> buscarPeloNome(@PathVariable String nome) {
+		pessoaRepository.findByNomeIgnoreCaseContaining(nome);
+		return new ResponseEntity<>(pessoaRepository.findByNomeIgnoreCaseContaining(nome), HttpStatus.OK);
+	}
+
 }

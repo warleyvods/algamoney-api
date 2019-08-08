@@ -13,7 +13,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @MappedSuperclass
-public class Entidade implements Serializable {
+public abstract class Entidade implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
