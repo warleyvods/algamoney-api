@@ -17,11 +17,8 @@ import javax.validation.Valid;
 public class PessoaResource {
 
 	private final PessoaRepository pessoaRepository;
-	
 	private final PessoaService pessoaService;
-	
 	private final ApplicationEventPublisher publisher;
-
 
 	public PessoaResource(PessoaRepository pessoaRepository, PessoaService pessoaService, ApplicationEventPublisher publisher) {
 		this.pessoaRepository = pessoaRepository;
