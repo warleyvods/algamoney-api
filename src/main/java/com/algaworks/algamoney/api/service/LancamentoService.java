@@ -2,7 +2,7 @@ package com.algaworks.algamoney.api.service;
 
 import com.algaworks.algamoney.api.model.Lancamento;
 import com.algaworks.algamoney.api.model.Pessoa;
-import com.algaworks.algamoney.api.repository.LancamentoRespository;
+import com.algaworks.algamoney.api.repository.LancamentoRepository;
 import com.algaworks.algamoney.api.repository.PessoaRepository;
 import com.algaworks.algamoney.api.service.exception.PessoaInexisteOuInativaException;
 import org.springframework.stereotype.Service;
@@ -12,11 +12,11 @@ public class LancamentoService {
 
     private final PessoaRepository pessoaRepository;
 
-    private final LancamentoRespository lancamentoRespository;
+    private final LancamentoRepository lancamentoRepository;
 
-    public LancamentoService(PessoaRepository pessoaRepository, LancamentoRespository lancamentoRespository) {
+    public LancamentoService(PessoaRepository pessoaRepository, LancamentoRepository lancamentoRepository) {
         this.pessoaRepository = pessoaRepository;
-        this.lancamentoRespository = lancamentoRespository;
+        this.lancamentoRepository = lancamentoRepository;
     }
 
 
@@ -25,7 +25,7 @@ public class LancamentoService {
         if (pessoa == null || pessoa.isInativo()) {
             throw new PessoaInexisteOuInativaException();
         }
-        return lancamentoRespository.save(lancamento);
+        return lancamentoRepository.save(lancamento);
     }
 
 }

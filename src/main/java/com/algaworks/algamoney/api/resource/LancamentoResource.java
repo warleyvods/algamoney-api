@@ -3,7 +3,8 @@ package com.algaworks.algamoney.api.resource;
 import com.algaworks.algamoney.api.event.RecursoCriadoEvent;
 import com.algaworks.algamoney.api.exceptionhandler.AlgamoneyExceptionHandler;
 import com.algaworks.algamoney.api.model.Lancamento;
-import com.algaworks.algamoney.api.repository.LancamentoRespository;
+import com.algaworks.algamoney.api.repository.LancamentoRepository;
+import com.algaworks.algamoney.api.repository.filter.LancamentoFilter;
 import com.algaworks.algamoney.api.service.LancamentoService;
 import com.algaworks.algamoney.api.service.exception.PessoaInexisteOuInativaException;
 import org.apache.commons.lang3.exception.ExceptionUtils;
@@ -27,11 +28,11 @@ public class LancamentoResource {
 
     private final LancamentoService lancamentoService;
 
-    private final LancamentoRespository lancamentoRepository;
+    private final LancamentoRepository lancamentoRepository;
 
     private final ApplicationEventPublisher publisher;
 
-    public LancamentoResource(MessageSource messageSource, LancamentoService lancamentoService, LancamentoRespository lancamentoRepository, ApplicationEventPublisher publisher) {
+    public LancamentoResource(MessageSource messageSource, LancamentoService lancamentoService, LancamentoRepository lancamentoRepository, ApplicationEventPublisher publisher) {
         this.messageSource = messageSource;
         this.lancamentoService = lancamentoService;
         this.lancamentoRepository = lancamentoRepository;
@@ -39,8 +40,8 @@ public class LancamentoResource {
     }
 
     @GetMapping
-    public List<Lancamento> listar() {
-        return lancamentoRepository.findAll();
+    public List<Lancamento> pesquisar(LancamentoFilter lancamentoFilter) {
+        return lancamentoRepository.filtrar(lancamentoFilter);
     }
 
     @GetMapping("/{codigo}")
