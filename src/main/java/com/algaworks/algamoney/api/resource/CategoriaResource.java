@@ -27,8 +27,8 @@ public class CategoriaResource {
 	}
 
 	@GetMapping
-	public List<Categoria> listar() {
-		return categoriaRepository.findAll();
+	public ResponseEntity<?> listar() {
+		return new ResponseEntity<>(categoriaRepository.findAll(), HttpStatus.OK);
 	}
 	
 	@PostMapping

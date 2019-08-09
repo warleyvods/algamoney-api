@@ -60,10 +60,10 @@
         </dependency>
 
         <!--Flyway-->
-        <dependency>
+        <!--<dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
-        </dependency>
+        </dependency>-->
 
         <!-- Spring boot Test-->
         <dependency>
