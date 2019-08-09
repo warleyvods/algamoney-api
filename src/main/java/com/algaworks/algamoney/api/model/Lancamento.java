@@ -12,9 +12,10 @@ import java.time.LocalDate;
 @Table(name = "lancamento")
 public class Lancamento extends Entidade {
 
+	private String descricao;
 	@Column(name = "data_vencimento")
 	private LocalDate dataVencimento;
-	private String descricao;
+
 	@Column(name = "data_pagamento")
 	private LocalDate dataPagamento;
 	private BigDecimal valor;

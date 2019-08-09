@@ -36,6 +36,11 @@ public class PessoaResource {
 		return ResponseEntity.status(HttpStatus.CREATED).body(pessoaSalva);
 	}
 
+	@GetMapping
+	public ResponseEntity<?> listar() {
+		return new ResponseEntity<>(pessoaRepository.findAll(), HttpStatus.OK);
+	}
+
 	@GetMapping("/{codigo}")
 	public ResponseEntity<?> buscarPeloCodigo(@PathVariable Long codigo) {
 		Pessoa pessoa = pessoaRepository.findOne(codigo);
