@@ -20,7 +20,6 @@ public class LancamentoRepositoryImpl implements LancamentoRepositoryQuery {
     @PersistenceContext
     private EntityManager manager;
 
-
     @Override
     public List<Lancamento> filtrar(LancamentoFilter lancamentoFilter) {
         CriteriaBuilder builder = manager.getCriteriaBuilder();
@@ -37,9 +36,10 @@ public class LancamentoRepositoryImpl implements LancamentoRepositoryQuery {
     private Predicate[] criarRestricoes(LancamentoFilter lancamentoFilter, CriteriaBuilder builder,
                                         Root<Lancamento> root) {
         List<Predicate> predicates = new ArrayList<>();
-
-        if(StringUtils.isEmpty(lancamentoFilter.getDescricao())) {
-            predicates.add(builder.like(builder.lower(root.get("descricao")), "%" + lancamentoFilter.getDescricao().toLowerCase() + "%"));
+        //TODO A remoção do "!" de StringUtils lança um nullpointer
+        if (!StringUtils.isEmpty(lancamentoFilter.getDescricao())) {
+            predicates.add(builder.like(
+                    builder.lower(root.get("descricao")), "%" + lancamentoFilter.getDescricao().toLowerCase() + "%"));
         }
 
         if (lancamentoFilter.getDataVencimentoDe() != null) {
