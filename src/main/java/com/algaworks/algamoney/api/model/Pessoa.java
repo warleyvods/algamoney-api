@@ -1,14 +1,10 @@
 package com.algaworks.algamoney.api.model;
 
 import com.algaworks.algamoney.api.arquiteturabase.entidade.Entidade;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Data
@@ -24,5 +20,11 @@ public class Pessoa extends Entidade {
 
 	@NotNull
 	private Boolean ativo;
+
+	@JsonIgnore
+	@Transient
+	public boolean isInativo() {
+		return !this.ativo;
+	}
 
 }
