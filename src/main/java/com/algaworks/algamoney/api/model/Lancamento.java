@@ -2,12 +2,14 @@ package com.algaworks.algamoney.api.model;
 
 import com.algaworks.algamoney.api.arquiteturabase.entidade.Entidade;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@EqualsAndHashCode(callSuper = false)
 @Data
 @Entity
 @Table(name = "lancamento")

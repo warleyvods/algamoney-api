@@ -3,14 +3,17 @@ package com.algaworks.algamoney.api.model;
 import com.algaworks.algamoney.api.arquiteturabase.entidade.Entidade;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
-@Data
+
+
 @Entity
 @Table(name = "pessoa")
-public class Pessoa extends Entidade {
+@EqualsAndHashCode(callSuper = false)
+public @Data  class Pessoa extends Entidade {
 
 	@NotNull
 	private String nome;
