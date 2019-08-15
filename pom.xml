@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.algaworks</groupId>
     <artifactId>algamoney-api</artifactId>
-    <version>0.0.6</version>
+    <version>0.0.7</version>
     <name>algamoney-api</name>
     <description>Spring + Angular aulas </description>
 
@@ -80,11 +80,11 @@
         </dependency>
 
         <!-- Sonar -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.sonarsource.scanner.maven</groupId>
             <artifactId>sonar-maven-plugin</artifactId>
             <version>3.4.0.905</version>
-        </dependency>
+        </dependency>-->
 
         <!--Flyway-->
         <!--<dependency>
@@ -115,6 +115,11 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.6.0.1398</version>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
