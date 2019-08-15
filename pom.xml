@@ -86,7 +86,6 @@
             <version>3.4.0.905</version>
         </dependency>
 
-
         <!--Flyway-->
         <!--<dependency>
             <groupId>org.flywaydb</groupId>
@@ -106,7 +105,7 @@
 			<version>3.2.1</version>
 		</dependency>
 
-        <!-- Spring boot Test-->
+        <!-- Spring boot Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -122,5 +121,19 @@
             </plugin>
         </plugins>
     </build>
+
+    <!--NEXUS-->
+    <distributionManagement>
+        <repository>
+            <id>deployment</id>
+            <name>Prod Interno</name>
+            <url>http://localhost:8081/repository/Ks-Service-PROD/</url>
+        </repository>
+        <snapshotRepository>
+            <id>deployment</id>
+            <name>Snapshot Interno</name>
+            <url>http://localhost:8081/repository/Ks-Service-SNAP/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>
