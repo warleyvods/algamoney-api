@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.algaworks</groupId>
     <artifactId>algamoney-api</artifactId>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <name>algamoney-api</name>
     <description>Spring + Angular aulas</description>
 
