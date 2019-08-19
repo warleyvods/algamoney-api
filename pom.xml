@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.algaworks</groupId>
     <artifactId>algamoney-api</artifactId>
-    <version>0.0.9-SNAPSHOT</version>
+    <version>0.0.10-SNAPSHOT</version>
     <name>algamoney-api</name>
     <description>Spring + Angular aulas </description>
 
@@ -105,6 +105,13 @@
 			<version>3.2.1</version>
 		</dependency>
 
+        <!--Model Mapper-->
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>2.3.0</version>
+        </dependency>
+
         <!-- Spring boot Test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -135,7 +142,7 @@
             <url>http://localhost:8081/repository/Ks-Service-PROD/</url>
         </repository>
         <snapshotRepository>
-            <id>deployment</id>
+            <id>snapshots</id>
             <name>Snapshot Interno</name>
             <url>http://localhost:8081/repository/Ks-Service-SNAP/</url>
         </snapshotRepository>

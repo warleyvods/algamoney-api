@@ -13,11 +13,12 @@ pipeline {
                 echo 'Testing..'
 				sh 'mvn test'
             }
-	stage('Sonar') {
+        }
+	    stage('Sonar') {
 	    steps {
 		echo 'Testing..'
 				sh 'sonar:sonar'
-	    }
+	        }
         }
         stage('Deploy') {
             steps {
