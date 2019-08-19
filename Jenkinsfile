@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-				sh 'mvn compile war:war'
+				sh 'mvn clean install -U'
             }
         }
         stage('Test') {
@@ -13,10 +13,15 @@ pipeline {
                 echo 'Testing..'
 				sh 'mvn test'
             }
+	stage('Sonar') {
+	    steps {
+		echo 'Testing..'
+				sh 'sonar:sonar'
+	    }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                echo 'clean compile package deploy'
             }
         }
     }
