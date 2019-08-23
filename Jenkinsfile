@@ -25,3 +25,4 @@ pipeline {
                 echo 'clean compile package deploy'
             }
         }
+    }
