@@ -17,7 +17,7 @@ pipeline {
 	stage('Sonar') {
 	    steps {
 		echo 'Testing..'
-				sh 'sonar:sonar'
+				sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:RELEASE:sonar'
 	        }
         }
         stage('Deploy') {
