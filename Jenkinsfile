@@ -39,7 +39,7 @@ pipeline {
 
 def emailNotification(status) {
   emailext(
-  to: "${params.emailTo}",
+  to: "warleyvods@gmail.com",
   subject: "${status}",
   body: "Job Name: <b>${env.JOB_NAME}</b> <br>" +
       "Build: <b>${env.BUILD_NUMBER}</b> <br>" +
