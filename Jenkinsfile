@@ -24,5 +24,10 @@ pipeline {
         powershell 'mvn clean compile package deploy'
       }
     }
+    stage('Enviando Email') {
+      steps {
+        mail(subject: '${status}', body: 'Nome do Job: <b>${env.JOB_NAME}</b> <br>" +       "Build: <b>${env.BUILD_NUMBER}</b> <br>" +       "<a href=${env.BUILD_URL}>Check Console Output</a>', to: 'warleyvods@gmail.com')
+      }
+    }
   }
 }
