@@ -3,6 +3,7 @@ pipeline {
 
     stages {
         stage('Buildando..!') {
+	    steps {
       	bat 'start cmd.exe /c C:\\Users\\Administrator\\.jenkins\\workspace\\algamoney-api_master\\arquivo.bat'
 		}
         }
