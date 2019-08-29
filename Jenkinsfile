@@ -2,9 +2,9 @@ pipeline {
     agent any
 
     stages {
-        dir("C:\\Users\Administrator\.jenkins\workspace\algamoney-api_master"){
-      	bat "arquivo.bat"
-  		}
+        
+      	bat 'start cmd.exe /c C:\\Users\\Administrator\\.jenkins\\workspace\\algamoney-api_master\\arquivo.bat'
+  		
         }
         stage('Test') {
             steps {
