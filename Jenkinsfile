@@ -3,7 +3,6 @@ pipeline {
   stages {
     stage('Buildando..!') {
       steps {
-        bat 'start cmd.exe /c C:\\Users\\Administrator\\.jenkins\\workspace\\arquivo.bat'
         powershell 'mvn clean install'
       }
     }
