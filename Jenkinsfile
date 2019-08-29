@@ -3,24 +3,25 @@ pipeline {
   stages {
     stage('Buildando..!') {
       steps {
-        powershell 'mvn clean install'
+        powershell 'mvn clean install -U'
       }
     }
     stage('Test') {
       steps {
-        echo 'Testing..'
-        sh 'mvn test'
+        echo 'Testando'
+        powershell 'mvn test'
       }
     }
     stage('Sonar') {
       steps {
-        echo 'Testing..'
-        sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:RELEASE:sonar'
+        echo 'Analisando Qualidade do Codigo'
+        powershell 'mvn sonar:sonar'
       }
     }
     stage('Deploy') {
       steps {
-        echo 'clean compile package deploy'
+        echo 'Realizando Deploy'
+        powershell 'mvn clean compile package deploy'
       }
     }
   }
