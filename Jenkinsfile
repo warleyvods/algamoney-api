@@ -1,5 +1,10 @@
 pipeline {
   agent any
+  
+  parameters {
+    string(name: 'emailTo', defaultValue: "warleyvods@gmail.com")
+  }
+  
   stages {
     stage('Construindo') {
       steps {
@@ -25,18 +30,15 @@ pipeline {
       }
         post {
           success {
-            emailNotification('Sucesso ao Realizar o Deploy')
+            emailNotification('SUCESSO ao Realizar o Deploy')
         }
         failure {
-            emailNotification('FAILED ao Realizar o Deploy')
-        }
-      }
-      
-    }
-      
-    }
-   
-  }
+            emailNotification('FALHA ao Realizar o Deploy')
+         }
+       }
+     }
+   }
+ }
 
 def emailNotification(status) {
   emailext(
