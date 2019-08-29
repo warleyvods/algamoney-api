@@ -1,9 +1,6 @@
 pipeline {
   agent any
   
-  parameters {
-    string(name: 'emailTo', defaultValue: "warleyvods@gmail.com")
-  }
   
   stages {
     stage('Construindo') {
