@@ -2,11 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-				sh 'mvn clean install -U'
-            	  }
+        dir("C:\\Users\Administrator\.jenkins\workspace\algamoney-api_master"){
+      	bat "arquivo.bat"
+  		}
         }
         stage('Test') {
             steps {
