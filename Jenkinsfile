@@ -1,26 +1,26 @@
 pipeline {
   agent any
   stages {
-    stage('Buildando..!') {
+    stage('Construindo') {
       steps {
         powershell 'mvn clean install -U'
       }
     }
-    stage('Test') {
+    stage('Testando') {
       steps {
-        echo 'Testando'
+        echo 'Testando com Maven'
         powershell 'mvn test'
       }
     }
-    stage('Sonar') {
+    stage('Analisando Codigo') {
       steps {
-        echo 'Analisando Qualidade do Codigo'
+        echo 'Analisando Qualidade do Codigo no Sonarqube'
         powershell 'mvn sonar:sonar'
       }
     }
-    stage('Deploy') {
+    stage('Publicando') {
       steps {
-        echo 'Realizando Deploy'
+        echo 'Realizando Deploy no Nexus'
         powershell 'mvn clean compile package deploy'
       }
     }
