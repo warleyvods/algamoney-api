@@ -1,7 +1,5 @@
 pipeline {
   agent any
-  
-  
   stages {
     stage('Construindo') {
       steps {
@@ -21,28 +19,23 @@ pipeline {
       }
     }
     stage('Publicando') {
+      post {
+        success {
+          emailNotification 'SUCESSO ao Realizar o Deploy'
+
+        }
+
+        failure {
+          emailNotification 'FALHA ao Realizar o Deploy'
+
+        }
+
+      }
       steps {
         echo 'Realizando Deploy no Nexus'
         powershell 'mvn clean compile package deploy'
+        mail(to: 'warletvods@gmail.com', body: 'teste', subject: 'teste')
       }
-        post {
-          success {
-            emailNotification('SUCESSO ao Realizar o Deploy')
-        }
-        failure {
-            emailNotification('FALHA ao Realizar o Deploy')
-         }
-       }
-     }
-   }
- }
-
-def emailNotification(status) {
-  emailext(
-  to: "warleyvods@gmail.com",
-  subject: "${status}",
-  body: "Job Name: <b>${env.JOB_NAME}</b> <br>" +
-      "Build: <b>${env.BUILD_NUMBER}</b> <br>" +
-      "<a href=${env.BUILD_URL}>Check Console Output</a>"
-  )
+    }
+  }
 }
