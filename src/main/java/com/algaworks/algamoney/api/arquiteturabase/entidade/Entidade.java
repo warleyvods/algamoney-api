@@ -12,7 +12,8 @@ import java.io.Serializable;
 
 @MappedSuperclass
 @EqualsAndHashCode
-public @Data abstract class Entidade implements Serializable {
+@Data
+public abstract class Entidade implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

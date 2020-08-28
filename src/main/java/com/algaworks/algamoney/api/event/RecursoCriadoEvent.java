@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 public class RecursoCriadoEvent extends ApplicationEvent {
 
 	private static final long serialVersionUID = 1L;
-	
-	private HttpServletResponse response;
-	private Long codigo;
+
+	private final transient HttpServletResponse response;
+	private final Long codigo;
 
 	public RecursoCriadoEvent(Object source, HttpServletResponse response, Long codigo) {
 		super(source);

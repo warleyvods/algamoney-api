@@ -42,7 +42,6 @@ public class LancamentoRepositoryImpl implements LancamentoRepositoryQuery {
     private Predicate[] criarRestricoes(LancamentoFilter lancamentoFilter, CriteriaBuilder builder,
                                         Root<Lancamento> root) {
         List<Predicate> predicates = new ArrayList<>();
-        //TODO A remoção do "!" de StringUtils lança um nullpointer
         if (!StringUtils.isEmpty(lancamentoFilter.getDescricao())) {
             predicates.add(builder.like(
                     builder.lower(root.get("descricao")), "%" + lancamentoFilter.getDescricao().toLowerCase() + "%"));
