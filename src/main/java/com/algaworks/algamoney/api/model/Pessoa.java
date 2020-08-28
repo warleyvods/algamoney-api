@@ -19,7 +19,7 @@ public @Data  class Pessoa extends Entidade {
 	private String nome;
 
 	@Embedded
-	private Endereco endereco;
+	private transient Endereco endereco;
 
 	@NotNull
 	private Boolean ativo;
