@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/pessoas")
@@ -26,6 +27,7 @@ public class PessoaResource {
 		this.publisher = publisher;
 	}
 
+
 	@PostMapping
 	public ResponseEntity<Pessoa> criar(@Valid @RequestBody Pessoa pessoa, HttpServletResponse response) {
 		Pessoa pessoaSalva = pessoaRepository.save(pessoa);
@@ -34,12 +36,12 @@ public class PessoaResource {
 	}
 
 	@GetMapping
-	public ResponseEntity<> listar() {
+	public ResponseEntity<List<Pessoa>> listar() {
 		return new ResponseEntity<>(pessoaRepository.findAll(), HttpStatus.OK);
 	}
 
 	@GetMapping("/{codigo}")
-	public ResponseEntity<> buscarPeloCodigo(@PathVariable Long codigo) {
+	public ResponseEntity<Pessoa> buscarPeloCodigo(@PathVariable Long codigo) {
 		Pessoa pessoa = pessoaRepository.findOne(codigo);
 		return pessoa != null ? new ResponseEntity<>(pessoa, HttpStatus.OK) : new ResponseEntity<>(pessoa, HttpStatus.NOT_FOUND);
 	}
@@ -63,7 +65,7 @@ public class PessoaResource {
 	}
 
 	@GetMapping("/buscar-por-nome/{nome}")
-	public ResponseEntity<> buscarPeloNome(@PathVariable String nome) {
+	public ResponseEntity<List<Pessoa>> buscarPeloNome(@PathVariable String nome) {
 		pessoaRepository.findByNomeIgnoreCaseContaining(nome);
 		return new ResponseEntity<>(pessoaRepository.findByNomeIgnoreCaseContaining(nome), HttpStatus.OK);
 	}
